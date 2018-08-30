@@ -34,11 +34,10 @@ w = fspecial('laplacian', 0);
 I1 = imfilter(img, w, 'replicate');
 figure, imshow(I1, []), title('cast w')
 
-I2 = im2double(img)
+I2 = im2double(I1)
 I3 = imfilter(I2, w, 'replicate');
 img = I2 - I3
-img = imadjust(img);
-img = imclearborder(img, 4);
+
 
 figure, imshow(img, []), title('Laplacian')
 

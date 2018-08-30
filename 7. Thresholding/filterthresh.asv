@@ -1,8 +1,10 @@
+% This code is incomplete.
+
 img = imread('poem.jpg');
 img = rgb2gray(img);
 img = im2double(img);
-% figure, subplot(1, 2, 1)
-% imshow(img, []), title('Original image')
+figure
+imshow(img, []), title('Original image')
 
 % T = graythresh(img);
 % BW = im2bw(img, T);
@@ -21,24 +23,56 @@ img = im2double(img);
 % img = edge(img,'sobel', threshold * fudgeFactor);
 % figure, imshow(img), title('Binary gradient mask')
 
-w = fspecial('laplacian', 0);
-img = imfilter(img, w, 'replicate');
-figure, imshow(img, [])
-
 background = imopen(img,strel('disk',15));
+figure, imshow(background)
 img = img - background;
-figure, imshow(img, []),title("damnson")
+figure, imshow(img, []), title('no bg')
 
+
+
+w = fspecial('laplacian', 0);
+I1 = imfilter(img, w, 'replicate');
+I1 = imcomplement(I1);
+figure, imshow(I1, []), title('cast w')
+
+I2 = im2double(I1)
+I3 = imfilter(I2, w, 'replicate');
+img = I2 - I3
+img = imadjust(img);
 img = imclearborder(img, 4);
 
-% I3 = imfilter(I1, w, 'replicate');
+figure, imshow(img, []), title('Laplacian')
+
+[~, threshold] = edge(img, 'sobel');
+fudgeFactor = .5;
+img = edge(img,'sobel', threshold * fudgeFactor);
+figure, imshow(img), title('Binary gradient mask')
+
+se90 = strel('line', 1, 90);
+se0 = strel('line', 1, 0);
+img = imdilate(img, [se90 se0]);
+figure, imshow(img), title('Dialte')
+
+% img = imclearborder(img, 4);
+
+
+
+% w = fspecial('laplacian', 0);
+% I1 = imfilter(I, w, 'replicate');
+% figure, imshow(I1, [])
+% 
+% I2 = im2double(I);
+% I3 = imfilter(I2, w, 'replicate');
 % figure, imshow(I3, [])
 % 
-% img = I1 - I3
-% 
-% figure, imshow(J, []), title('Lmao')
+% J = I2 - I3
 
-ws = 15;
+figure, imshow(img, []), title('Lmao')
+
+background = imopen(img,strel('square',15));
+figure, imshow(background)
+
+ws = 5;
 fun = @(block_struct)im2bw(block_struct.data, graythresh(block_struct.data));
 BW_adapt = blockproc(img, [ws ws], fun);
 figure, imshow(BW_adapt), title('Adaptive thresholding with blockproc')
@@ -55,58 +89,3 @@ figure, imshow(BW_adapt), title('T-C')
 % imgnew = filter2(H, BW_adapt);
 % figure, imshow(BW_adapt), title('Noisy image (Gaussian)')
 % figure, imshow(imgnew), title('Improved image')
-
-% improved_img_sp_noise = medfilt2(BW_adapt, [3 3]);
-% figure, imshow(BW_adapt), title('Noisy image (salt & pepper)')
-% figure, imshow(improved_img_sp_noise), title('Improved image')
-
-% mask = ones(5, 5)
-% imgnew = conv2(BW_adapt, mask)
-% figure, imshow(imgnew, []), title('5x5 mask')
-
-% img_mean = imfilter(img, fspecial('average', ws), 'replicate');
-% BW_adapt_imp = img_mean - img - C
-% BW_adapt_imp = im2bw(BW_adapt_imp, 0);
-% BW_adapt_imp = imcomplement(BW_adapt_imp);
-% figure, imshow(BW_adapt_imp)
-% 
-% I = BW_adapt_imp;
-% % I = rgb2gray(I);
-% figure, imshow(I), title('Original image')
-% 
-% % Detect Entire Cell
-% [~, threshold] = edge(I, 'sobel');
-% fudgeFactor = .5;
-% BWs = edge(I,'sobel', threshold * fudgeFactor);
-% figure, imshow(BWs), title('Binary gradient mask')
-% 
-% % Dilate the image
-% se90 = strel('line', 3, 90);
-% se0 = strel('line', 3, 0);
-% BWsdil = imdilate(BWs, [se90 se0]);
-% figure, imshow(BWsdil), title('Dilated gradient mask')
-% 
-% % Fill Interior Gaps
-% BWdfill = imfill(BWsdil, 'holes');
-% figure, imshow(BWdfill);
-% title('Binary image with filled holes')
-% 
-% % Remove Connected Objects on Border
-% BWnobord = imclearborder(BWdfill, 4);
-% figure, imshow(BWnobord), title('Cleared border image')
-% 
-% % Smoothen the Object
-% seD = strel('diamond',1);
-% BWfinal = imerode(BWnobord,seD);
-% BWfinal = imerode(BWfinal,seD);
-% figure, imshow(BWfinal), title('Segmented image')
-% 
-% % Outline the image
-% BWoutline = bwperim(BWfinal);
-% Segout = I; 
-% Segout(BWoutline) = 255; 
-% figure, imshow(Segout), title('Outlined original image')
-
-
-% subplot(1, 2, 2)
-% imshow(thresh_img, []), title('Adaptive thresholding')
