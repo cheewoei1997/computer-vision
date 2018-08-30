@@ -1,3 +1,7 @@
+img = imread('olaf.jpg');
+img = rgb2gray(img);
+figure, imshow(img, []), title('Original image')
+
 % Simulate a motion blur image
 LEN = 21; THETA = 11;
 motion_noise = fspecial('motion', LEN, THETA);
