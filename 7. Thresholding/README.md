@@ -5,5 +5,5 @@ Turning them all black and white cuz who likes colours anyway.
     Automatic thresholding that's done by the computer.
 2. [Adaptive Thresholding](../6.%20Thresholding/adaptivethresh.m) adaptivethresh.m  
     Separate the image into blocks and find the threshold for that specific block.
-3. [Incorporating Filter Technique in Thresholding](../6.%20Thresholding/filterthresh.m) filterthresh.m [Incomplete]  
+3. **[Incomplete]** [Incorporating Filter Technique in Thresholding](../6.%20Thresholding/filterthresh.m) filterthresh.m  
     Utilise filters on top of thresholding to achieve better results.
