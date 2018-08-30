@@ -111,4 +111,7 @@ venv.bak/
 .vscode/settings.json
 
 # matlab
+*/*/*/.asv
+*/*/.asv
+*/.asv
 .asv
