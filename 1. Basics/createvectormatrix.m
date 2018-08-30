@@ -22,14 +22,3 @@ AN = [A1;A2]
 
 % Function to manipulate the structure of vector/matrix
 repmat(A,[2,3]) % Replicates the matrix with 2 rows and 3 columns
-
-
-
-
-
-
-
-
-
-
-    

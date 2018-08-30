@@ -15,4 +15,4 @@ toc
 % method 2
 tic                                     % This method is significantly
 ANorm = A./repmat(ASum, 1, size(A, 2)); % faster
-toc                                     
+toc                                   
