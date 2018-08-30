@@ -1,4 +1,4 @@
-### 2. Sampling, Quantization, Resolution
+### Sampling, Quantization, Resolution
 Playing with images using pixels, colours, and filters.
 
 1. [Sampling](../2.%20Sampling,%20Quantization,%20Resolution/sampling.m) sampling.m  

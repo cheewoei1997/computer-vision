@@ -1,4 +1,4 @@
-### 1. Basics
+### Basics
 The very basics of Matlab to get you started real quick.
 
 1. [Simple Scalar Operations](../1.%20Basics/simplescalaroperations.m) simplescalaroperations.m

@@ -1,4 +1,4 @@
-### 5. Segmentation
+### Segmentation
 Edge detection algorithms are what's lit here.
 
 1. [Implementing Edge Detector](../5.%20Segmentation/edgedetectors.m) edgedetectors.m  

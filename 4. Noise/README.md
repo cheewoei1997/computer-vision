@@ -1,4 +1,4 @@
-### 4. Noise
+### Noise
 Experimenting with different types of noise and how to handle them.
 
 1. [Implementing Noise Model](../4.%20Noise/addnoise.m) addnoise.m  

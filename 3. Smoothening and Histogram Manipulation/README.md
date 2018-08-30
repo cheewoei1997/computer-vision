@@ -1,4 +1,4 @@
-### 3. Smoothening and Histogram Manipulation
+### Smoothening and Histogram Manipulation
 We play with contrast stretching and median filter in this lab.
 
 1. [Contrast Stretching and Histogram Equalization](../3.%20Smoothening%20and%20Histogram%20Manipulation/contraststretchhistoequal.m) contraststretchhistoequal.m  
