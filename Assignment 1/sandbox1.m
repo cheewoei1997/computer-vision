@@ -22,13 +22,21 @@ imgclear = imread('images/ultrasoundclear.jpg');
 subplot(2, 2, 2)
 imshow(imgclear, []), title('Desired image')
 
-LEN = 10; THETA = 30;
+LEN = 10; THETA = 26; noise_var = 0.0001;
 motion_noise = fspecial('motion', LEN, THETA);
+signal_var = var(img(:));
+wnr3 = deconvwnr(img, motion_noise, noise_var / signal_var);
+figure, imshow(wnr3)
+title('Restoration of Blurred, Noisy Image - Estimated NSR');
 
-wnr = deconvwnr(img, motion_noise, 0.01);
-luri = deconvlucy(img, motion_noise);
-subplot(2, 2, 3), imshow(wnr), title('Deblur using Wiener');
-subplot(2, 2, 4), imshow(luri), title('Deblur using Lucy-Richardson');
+% LEN = 10; THETA = 26;
+% motion_noise = fspecial('motion', LEN, THETA);
+% 
+% wnr = deconvwnr(img, motion_noise, 0.01);
+% luri = deconvlucy(img, motion_noise);
+% subplot(2, 2, 3), imshow(wnr), title('Deblur using Wiener');
+% subplot(2, 2, 4), imshow(luri), title('Deblur using Lucy-Richardson');
+% figure, imshow(wnr)
 
 % se1 = strel('square',3);
 % img1 = imopen(luri, se1);    % Remove the noise by opening
