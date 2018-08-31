@@ -10,3 +10,10 @@ figure, imshow(diff, []), title('Difference image')
 
 img = imadjust(diff);   % perform contrast stretching cuz why not
 figure, imshow(img, []), title('Contrast Stretching')
+
+% % Code below is totally unnecessary
+% se1 = strel('square', 2);
+% img1 = imopen(img, se1);    % Remove the noise by opening
+% img2 = imclose(img1, se1);  % Connect back the image by closing
+% figure, imshow(img1, []), title('Open')
+% figure, imshow(img2, []), title('Close')
