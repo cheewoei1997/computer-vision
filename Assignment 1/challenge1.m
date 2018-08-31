@@ -1,15 +1,18 @@
 img = imread('images/ultrasound.jpg');
 img = rgb2gray(img);
-figure, imshow(img, []), title('Original image')
+img = im2double(img)
+figure, subplot(2, 2, 1)
+imshow(img, []), title('Blurred image')
 
-% % Simulate a motion blur image
-% LEN = 21; THETA = 11;
-% motion_noise = fspecial('motion', LEN, THETA);
-% blurred = imfilter(img, motion_noise, 'conv', 'circular');
-% figure, imshow(blurred), title('Blurred image')
+imgclear = imread('images/ultrasoundclear.jpg');
+subplot(2, 2, 2)
+imshow(imgclear, []), title('Desired image')
 
-% % Deblurring the image with Wiener filter
-% uniform_quantization_var = (1/256)^2/12;
-% signal_var = var(im2double(img(:)));
-% wnr = deconvwnr(img, motion_noise, uniform_quantization_var/signal_var);
-% figure, imshow(wnr), title('Restoration of Blurred Image')
+LEN = 10; THETA = 30;
+motion_noise = fspecial('motion', LEN, THETA);
+
+wnr = deconvwnr(img, motion_noise, 0.01);   % deblur using wiener filter
+luri = deconvlucy(img, motion_noise);       % deblur using lucy-richardson
+subplot(2, 2, 3), imshow(wnr), title('Deblur using Wiener');
+subplot(2, 2, 4), imshow(luri), title('Deblur using Lucy-Richardson');
+
