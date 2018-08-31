@@ -18,7 +18,3 @@ figure, imshow(I3);
 level = graythresh(I3);
 bw = im2bw(I3,level);
 figure, imshow(bw)
-
-% Label objects in the image
-[labeled, numObjects] = bwlabel(bw,4);
-numObjects

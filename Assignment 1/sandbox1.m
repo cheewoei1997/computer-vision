@@ -30,6 +30,25 @@ luri = deconvlucy(img, motion_noise);
 subplot(2, 2, 3), imshow(wnr), title('Deblur using Wiener');
 subplot(2, 2, 4), imshow(luri), title('Deblur using Lucy-Richardson');
 
+% se1 = strel('square',3);
+% img1 = imopen(luri, se1);    % Remove the noise by opening
+% img2 = imclose(img1, se1);  % Connect back the image by closing
+% figure, imshow(img2)
+
+%%%%
+
+% w = fspecial('laplacian', 0);
+% I1 = imfilter(luri, w, 'replicate');
+% figure, imshow(I1, [])
+% 
+% I2 = im2double(luri);
+% I3 = imfilter(I2, w, 'replicate');
+% figure, imshow(I3, [])
+% 
+% J = I2 - I3
+% J = imadjust(J)
+% figure, imshow(J, [])
+
 % WEIGHT = edge(wnr,'sobel',.08);
 % 
 % se = strel('disk',2);
