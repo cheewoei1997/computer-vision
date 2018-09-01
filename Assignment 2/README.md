@@ -6,7 +6,7 @@ of the operation. For example, given the sample equation in Figure 1, your progr
 result as “13”.
 
 <p align="center">
-    <img width="440" src="https://github.com/cheewoei1997/computer-vision/blob/master/Assignment%202/images/sixpluseight.png">
+    <img width="660" src="https://github.com/cheewoei1997/computer-vision/blob/master/Assignment%202/images/sixpluseight.png">
 </p>
 
 During your presentation, you will be given a random set of numbers and mathematic operations (i.e.
@@ -21,7 +21,7 @@ The current number of people appearing in the video should be displayed on the s
 program output looks as follows:
 
 <p align="center">
-    <img width="440" src="https://github.com/cheewoei1997/computer-vision/blob/master/Assignment%202/images/shadypeople.png">
+    <img width="880" src="https://github.com/cheewoei1997/computer-vision/blob/master/Assignment%202/images/shadypeople.png">
 </p>
 
 **What you should do?**
