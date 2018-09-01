@@ -21,7 +21,7 @@ The current number of people appearing in the video should be displayed on the s
 program output looks as follows:
 
 <p align="center">
-    <img width="440" src="https://github.com/cheewoei1997/computer-vision/blob/master/Assignment%202/images/darksilhoutte.png">
+    <img width="440" src="https://github.com/cheewoei1997/computer-vision/blob/master/Assignment%202/images/shadypeople.png">
 </p>
 
 **What you should do?**
