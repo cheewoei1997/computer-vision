@@ -6,7 +6,11 @@ ref = rgb2gray(ref);
 diff1 = temp - ref;     % obtain the difference between the 2 images
 diff2 = ref - temp
 diff = diff1 + diff2
-figure, imshow(diff, []), title('Difference image')
+img_complement = imcomplement(diff)
+figure, imshow(img_complement, []), title('Difference image')
 
-img = imadjust(diff);   % perform contrast stretching cuz why not
-figure, imshow(img, []), title('Contrast Stretching')
+img_stretch = imadjust(img_complement);   % perform contrast stretching cuz why not
+figure, imshow(img_stretch, []), title('Contrast Stretching')
+
+img_snp = medfilt2(img_stretch, [3 3]);
+figure, imshow(img_snp), title('Improved image')

@@ -6,10 +6,28 @@ ref = rgb2gray(ref);
 diff1 = temp - ref;     % obtain the difference between the 2 images
 diff2 = ref - temp
 diff = diff1 + diff2
-figure, imshow(diff, []), title('Difference image')
+img = imcomplement(diff)
+figure, imshow(img, []), title('Difference image')
 
-img = imadjust(diff);   % perform contrast stretching cuz why not
+img = imadjust(img);   % perform contrast stretching cuz why not
 figure, imshow(img, []), title('Contrast Stretching')
+
+ws = 5;
+fun = @(block_struct)im2bw(block_struct.data, graythresh(block_struct.data));
+BW_adapt = blockproc(img, [ws ws], fun);
+figure, imshow(BW_adapt), title('Adaptive thresholding with blockproc')
+
+img = medfilt2(img, [3 3]);
+figure, imshow(img), title('Improved image')
+img = im2double(img)
+
+
+
+% img = imadjust(img);   % perform contrast stretching cuz why not
+% figure, imshow(img, []), title('Contrast Stretching')
+
+% img = medfilt2(img, [3 3]);
+% figure, imshow(img), title('Improved image')
 
 % % Code below is totally unnecessary
 % se1 = strel('square', 2);
