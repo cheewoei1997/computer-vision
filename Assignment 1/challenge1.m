@@ -1,14 +1,14 @@
 img = imread('images/ultrasound.jpg');
 img = rgb2gray(img);
-img = im2double(img)
+img = im2double(img);
 figure, subplot(2, 2, 1)
 imshow(img, []), title('Blurred image')
 
-imgclear = imread('images/ultrasoundclear.jpg');
+imgclear = imread('ultrasoundclear.jpg');
 subplot(2, 2, 2)
 imshow(imgclear, []), title('Desired image')
 
-LEN = 10; THETA = 30;
+ LEN = 10; THETA = 30;
 motion_noise = fspecial('motion', LEN, THETA);
 
 wnr = deconvwnr(img, motion_noise, 0.01);   % deblur using wiener filter
