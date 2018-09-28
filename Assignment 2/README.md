@@ -1,4 +1,11 @@
 # Assignment 2
+### Results
+#### Report
+Softcopy for the entire assignment. [Click here](https://docs.google.com/document/d/1PiMsa47tE_XXRXRQElYRtcbSdUJ5fBuQIrsJ2b20yj0/edit?usp=sharing).
+
+#### Video Presentation
+Watch how we carried our tasks out. **TBD**.
+
 ### Challenge 1
 In this challenge, you are going to develop an automated equation solver. Given a line of equation, your program should be able to recognize each of the numbers and symbols in the image and output the result of the operation. For example, given the sample equation in Figure 1, your program need to output the result as “13”.
 

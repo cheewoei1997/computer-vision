@@ -1,4 +1,11 @@
 # Assignment 1
+### Results
+#### Report
+Softcopy for the entire assignment. [Click here](https://docs.google.com/document/d/1rW5nwbVK0ckWtTY79oE9csAb1clkaROXaUKCI68hIRw/edit?usp=sharing).
+
+#### Video Presentation
+Watch how we carried our tasks out. [Click here](https://drive.google.com/file/d/1CeWb9tJsm3WdAz1oZwLRCIz85PChUoip/view).
+
 ### Challenge 1
 You work as an image processing specialist at the Malayan National Hospital. You are given an ultrasound of a baby scan shown in Figure 1 (ultrasound.jpg). Your task is to enhance this image by sharpening it to bring out more of the baby body’s detail. The narrow dynamic range of the intensity levels and high noise content make this image difficult to enhance. Try to come out with a strategy to increase the dynamic range of the intensity levels. You can combine various types of image processing techniques like sharpening/smoothing filter, contrast stretching, and noise removal to achieve your objective. A sample output image is shown in Figure 2.
 
