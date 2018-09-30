@@ -8,35 +8,67 @@ nFrames = video.NumberOfFrames;
 % [warning, Fs] = audioread('somethingwrong.wav');
 flag = 1;
 
-k=300
+k = 400;
 % for k=100: nFrames-1
     img1 = read(video, k-1);
     img2 = read(video, k);
     diff = abs(rgb2gray(img2) - (rgb2gray(img1)));
+    figure, imshow(diff,[]), title('first pic')
 %     diff = graythresh(diff)
 %     diff = im2bw(diff)
 %     diff = imopen(diff,strel('line',15,90));
 %     
 %     figure, imshow(diff, []), title('Diff')
 %     
-%     mask = fspecial('average', 5);
-%     removenoise = filter2(mask, diff)/255;
-%     figure, imshow(removenoise, []), title('noise')
-%     
-%     thresh = imbinarize(removenoise)
-%     figure, imshow(thresh, []), title('thresh')
-
-    J1 = diff > 15;
-    figure, imshow(J1,[]), title('thresh')
+    mask = fspecial('average', 5);
+    removenoise = filter2(mask, diff)/255;
+    figure, imshow(removenoise, []), title('gaussian noise')
     
-    diff = imopen(J1,strel('line',5,90));
-    figure, imshow(diff,[]),title('open')
+    % Remove salt & pepper noise with average filter
+    diff = medfilt2(removenoise, [3 3]);
+    figure, imshow(diff, []), title(' aaveragenoise')
+
+    
+%     diff = imbinarize(diff)
+%     figure, imshow(diff, []), title('thresh')
+
+    diff = diff > 1;
+    figure, imshow(diff,[]), title('thresh')
+    
+%     diff = imopen(diff,strel('line',5,90));
+%     figure, imshow(diff,[]),title('open')
     
     diff = imclose(diff,strel('disk',20));
     figure, imshow(diff,[]),title('close')
     
-%     diff = imopen(J1,strel('sphere',3));
-%     figure, imshow(diff,[]),title('sphere')
+%     diff = bwareaopen(diff,2000)
+%     figure, imshow(diff), title('bwareaopen')
+    
+    diff = imfill(diff, 'holes');
+    figure, imshow(diff,[]),title('fill')
+    
+    diff = imclose(diff,strel('sphere',3));
+    figure, imshow(diff,[]),title('sphere')
+    
+    labeledImage = bwlabel(diff, 8);     % same as connected components
+    blobMeasurements = regionprops(labeledImage,'all'); % measure all properties of
+                                                    % the image
+    pepe = size(blobMeasurements, 10)    % count the number of trees
+    
+    % draw bounding circles
+    XY = [blobMeasurements.Centroid];
+
+    %Find out the coordinates of labeled objects
+    coordinate(:, 1) = XY(1:2:end);
+    coordinate(:, 2) = XY(2:2:end);
+
+    %Find out the radius of labeled objects
+    radius(1:length(coordinate), :) = 15;
+
+    %Create the circle
+    figure, imshow(img2), title('Final Result');
+    h = viscircles(coordinate, radius);
+
 
     
 %     se = strel('sphere',3);
