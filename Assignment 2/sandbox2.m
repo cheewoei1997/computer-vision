@@ -9,7 +9,7 @@ nFrames = video.NumberOfFrames;
 flag = 1;
 
 % k = 300;
-for k=100: nFrames-1
+for k=400: nFrames-1
     img1 = read(video, k-1);
     img2 = read(video, k);
     diff = abs(rgb2gray(img2) - (rgb2gray(img1)));
@@ -92,7 +92,13 @@ text(200, 325, sprintf('Number of trees: %f', number_tree), ...
 hold on
 for k = 1: length(boxx)
     CurrBB = boxx(k).BoundingBox;
-    rectangle('Position', [CurrBB(1), CurrBB(2), CurrBB(3), CurrBB(4)],'EdgeColor', 'r', 'LineWidth', 2)
+    if CurrBB(3) < CurrBB(4) 
+        rectangle('Position', [CurrBB(1), CurrBB(2), CurrBB(3), CurrBB(4)],'EdgeColor', 'r', 'LineWidth', 2)
+    end
+    CurrBB(1)
+    CurrBB(2)
+    CurrBB(3)
+    CurrBB(4)
 end
 hold off
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
