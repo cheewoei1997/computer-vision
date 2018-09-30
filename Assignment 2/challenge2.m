@@ -1,7 +1,8 @@
 video = VideoReader('videoCompressed.avi');
 nFrames = video.NumberOfFrames;     % Acquire the number of frames
 
-for k=200: nFrames-1
+% Start at frame 300
+for k=300: nFrames-1
     img1 = read(video, k-1);        % Read inital image
     img2 = read(video, k);          % Read current image
     
@@ -34,13 +35,13 @@ for k=200: nFrames-1
 
     %% Labeling objects in image
     [L, NUM] = bwlabel(diff, 8);
-    number_tree = NUM;
+    objects = NUM;
 
     % Draw bounding box around the labels
     boxx = regionprops(diff, 'BoundingBox');
 
     imshow(img2), title('Image with bounding box')
-    text(0, 0, sprintf('Human: %f', number_tree), ...
+    text(0, 0, sprintf('Human: %f', objects), ...
       'VerticalAlignment', 'bottom', ...
       'HorizontalAlignment', 'center');
 
