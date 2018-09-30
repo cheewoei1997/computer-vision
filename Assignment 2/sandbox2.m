@@ -95,10 +95,6 @@ for k = 1: length(boxx)
     if CurrBB(3) < CurrBB(4) 
         rectangle('Position', [CurrBB(1), CurrBB(2), CurrBB(3), CurrBB(4)],'EdgeColor', 'r', 'LineWidth', 2)
     end
-    CurrBB(1)
-    CurrBB(2)
-    CurrBB(3)
-    CurrBB(4)
 end
 hold off
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
