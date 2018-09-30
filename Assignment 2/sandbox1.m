@@ -40,7 +40,7 @@ imgGray2 = padarray(imgGray2, [addHeight2 addWidth2], 255, 'both');
 imgGray2 = imresize(imgGray2,[100 100]);
 [f2, d2] = vl_sift(single(imgGray2), 'PeakThresh', peakThresh, 'EdgeThresh', edgeThresh);
 
-img1 = imread('database/multiply.jpg'); % Load and resize image
+img1 = imread('images/database/multiply.jpg'); % Load and resize image
 img1 = imcomplement(img1);
 imgGray1 = rgb2gray(img1); %Extrast SIFT features
 [height1, width1, channels1] = size(imgGray1);
