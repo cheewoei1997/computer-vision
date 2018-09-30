@@ -9,7 +9,7 @@ nFrames = video.NumberOfFrames;
 flag = 1;
 
 % k = 300;
-for k=400: nFrames-1
+for k=100: nFrames-1
     img1 = read(video, k-1);
     img2 = read(video, k);
     diff = abs(rgb2gray(img2) - (rgb2gray(img1)));
@@ -85,9 +85,9 @@ number_tree = NUM;
 boxx = regionprops(diff, 'BoundingBox');
 
 imshow(img2), title('Image with bounding box')
-text(200, 325, sprintf('Number of trees: %f', number_tree), ...
-  'VerticalAlignment', 'bottom', ...
-  'HorizontalAlignment', 'center');
+% text(200, 325, sprintf('Human: %f', number_tree), ...
+%   'VerticalAlignment', 'bottom', ...
+%   'HorizontalAlignment', 'center');
 
 hold on
 for k = 1: length(boxx)
